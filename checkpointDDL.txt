@@ -1,0 +1,25 @@
+CREATE TABLE Product(
+  Product_id VARCHAR(20) CONSTRAINT pk_product PRIMARY KEY,
+  Product_Name VARCHAR(20) CONSTRAINT product_Name NOTNULL,
+  Price NUMBER CONSTRAINT postif_number CHECK (price>0),
+);
+
+
+CREATE TABLE Customer(
+  column_id VARCHAR(20) CONSTRAINTE pk_column PRIMARY KEY,
+  customer_Name VARCHAR(20) CONSTRAINT customer_Name NOTNULL,
+  customer_Tel NUMBER
+);
+
+
+CREATE TABLE Orders(
+   
+   Quantity NUMBER,
+   Total_amount NUMBER,
+   CONSTRAINT customer_id FOREIGN KEY (customer_id) REFERENCES Customer(column_id),
+   CONSTRAINT product_id FOREIGN KEY (product_id) REFERENCES Product(Product_id)
+); 
+
+
+ALTER TABLE Product ADD category VARCHAR(20),
+ALTER TABLE ORDERS ADD orderDate DATE DEFAULT 'SYSDATE';
